@@ -1,0 +1,3117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PMR India · Peace Musick Records</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- YouTube iFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <style>
+    :root{
+      --black:#050505;
+      --black-soft:#0b0b0b;
+      --yellow:#ffd400;
+      --yellow-soft:#fff4b8;
+      --muted:#bdbdbd;
+      --max-w:1200px;
+      --red:#e53935;
+      --red-dark:#b71c1c;
+      --sbi-blue:#1f3566;
+      --sbi-red:#e21836;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:var(--black);
+      color:#f5f5f5;
+      -webkit-font-smoothing:antialiased;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    a{color:inherit;text-decoration:none}
+    .caption-small{font-size:11px;color:var(--muted);}
+
+    /* ========== IMPROVED NAVBAR ========== */
+    header.nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #111;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .brand .logo {
+      width: 87px;
+      height: 64px;
+      border-radius: 0;
+      border: none;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .brand .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #111;
+      line-height: 1.1;
+    }
+    
+    .brand-subtitle {
+      font-size: 10px;
+      color: #666;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Desktop Navigation */
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      padding: 8px 0;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--yellow);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #000;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .nav-links a.active {
+      color: #000;
+      font-weight: 700;
+    }
+    
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    
+    .nav-cta {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .nav-btn {
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+    
+    .nav-btn-primary {
+      background: var(--yellow);
+      color: #111;
+    }
+    
+    .nav-btn-primary:hover {
+      background: #ffc800;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 212, 0, 0.3);
+    }
+    
+    .nav-btn-outline {
+      background: transparent;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+    
+    .nav-btn-outline:hover {
+      border-color: var(--yellow);
+      color: #000;
+    }
+    
+    /* Mobile Navigation */
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #111;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 101;
+    }
+    
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      z-index: 99;
+      padding: 20px 0;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .mobile-nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .mobile-nav-links a {
+      display: block;
+      padding: 16px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease;
+    }
+    
+    .mobile-nav-links a:hover,
+    .mobile-nav-links a.active {
+      background: rgba(255, 212, 0, 0.1);
+      color: #000;
+      padding-left: 28px;
+    }
+    
+    .mobile-nav-cta {
+      padding: 20px 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    /* HERO */
+    .hero{
+      padding:80px 24px 100px;
+    }
+    .hero-grid{
+      max-width:var(--max-w);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.05fr 0.95fr;
+      gap:34px;
+      align-items:center;
+    }
+    .hero-left{padding-right:10px}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      padding:5px 10px;
+      border-radius:6px;
+      border:1px solid rgba(255,212,0,0.3);
+      color:var(--yellow);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:0.16em;
+      margin-bottom:20px;
+    }
+    .big-title{
+      font-family:Anton,sans-serif;
+      font-weight: normal;
+      margin:0 0 18px;
+      line-height:0.92;
+      letter-spacing:-0.02em;
+      color:#fff;
+    }
+    .big-title .line-white{display:block;font-size:90px;}
+    .big-title .line-yellow{display:block;font-size:90px;color:var(--yellow);}
+    .lead{
+      color:var(--muted);
+      font-size:15px;
+      max-width:620px;
+      margin-bottom:22px;
+    }
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .btn{
+      border:none;
+      border-radius:6px;
+      padding:13px 22px;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 12px 30px rgba(0,0,0,0.55);
+      transition: all 0.2s ease;
+    }
+    .btn-primary{background:var(--yellow);color:#111;}
+    .btn-primary:hover {
+      background: #ffc800;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.65);
+    }
+    .btn-ghost{
+      background:transparent;
+      color:#fff;
+      border:2px solid rgba(255,255,255,0.12);
+      box-shadow:none;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255, 212, 0, 0.5);
+      color: var(--yellow-soft);
+    }
+    .hero-note{
+      color:var(--muted);
+      font-size:12px;
+    }
+    .hero-right{
+      height:420px;
+      border-radius:18px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:0 30px 70px rgba(0,0,0,0.9);
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    .hero-right img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.02);
+    }
+    .hero-right::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.75),transparent 55%);
+    }
+    .hero-right .badge{
+      position:absolute;
+      left:18px;top:16px;
+      z-index:2;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(0,0,0,0.7);
+      border:1px solid rgba(255,212,0,0.4);
+      color:var(--yellow-soft);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:0.16em;
+    }
+    .hero-right .caption{
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      z-index:2;
+      color:#fff;
+      font-size:12px;
+    }
+    .hero-right .caption strong{display:block;font-size:14px;}
+
+    /* GENERIC SECTION */
+    section.sec{
+      border-top:1px solid rgba(255,255,255,0.06);
+      padding:46px 24px;
+      background:var(--black-soft);
+    }
+    .sec .inner{
+      max-width:var(--max-w);
+      margin:0 auto;
+    }
+    .sec-eyebrow{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.18em;
+      color:var(--yellow-soft);
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
+    .sec-title{
+      font-family:Poppins,sans-serif;
+      font-size:24px;
+      font-weight:700;
+      color:#fff;
+      margin:0 0 10px;
+    }
+    .sec-text{
+      color:var(--muted);
+      font-size:14px;
+      max-width:860px;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:18px;
+      margin-top:20px;
+    }
+    .card{
+      background:#070707;
+      border-radius:12px;
+      padding:16px 16px 18px;
+      border:1px solid rgba(255,255,255,0.05);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 212, 0, 0.2);
+    }
+    .card h4{
+      font-family:Poppins,sans-serif;
+      font-weight:700;
+      color:var(--yellow);
+      margin:0 0 6px;
+      font-size:14px;
+    }
+    .card p{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    /* SERVICES (ABOUT SECTION REUSED) */
+    .service-list{
+      list-style:none;
+      margin:8px 0 0;
+      padding:0;
+      font-size:13px;
+      color:var(--muted);
+      display:grid;
+      gap:4px;
+    }
+    .service-list li{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .service-list li::before{
+      content:"▶";
+      color:var(--yellow);
+      font-size: 10px;
+    }
+
+    /* ========== YOUTUBE VIDEO PLAYERS ========== */
+    .video-section {
+      margin-top: 30px;
+    }
+    
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+    
+    .video-card {
+      background: #070707;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--yellow);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .video-thumbnail {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .video-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.3s ease;
+      background: #000;
+    }
+
+    .video-thumbnail:hover img {
+      transform: scale(1.05);
+    }
+
+    .youtube-btn {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: var(--yellow);
+      border: 1px solid var(--yellow);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .youtube-btn:hover {
+      background: var(--yellow);
+      color: #111;
+      transform: translateX(-50%) translateY(-2px);
+    }
+    
+    .video-player-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      background: #000;
+      overflow: hidden;
+      border-radius: 12px 12px 0 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    .video-player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      z-index: 1;
+    }
+    
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+      backdrop-filter: blur(2px);
+    }
+
+    /* Hide play button overlay for first video (Harkat) */
+    #overlay-1 {
+      display: none !important;
+    }
+    
+    .video-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .play-button {
+      width: 70px;
+      height: 70px;
+      background: var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #111;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    
+    .play-button:hover {
+      transform: scale(1.1);
+      background: #ffc800;
+    }
+    
+    .video-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--yellow);
+      z-index: 1;
+      font-size: 14px;
+    }
+    
+    .video-info {
+      padding: 20px;
+    }
+
+    .video-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .video-artist {
+      font-size: 14px;
+      color: var(--yellow);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .video-description {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .video-meta {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .video-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .video-meta-item i {
+      color: var(--yellow);
+      font-size: 11px;
+    }
+
+    .video-interactions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .interaction-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .interaction-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+    }
+
+    .interaction-btn:hover {
+      background: rgba(255, 212, 0, 0.1);
+      color: var(--yellow);
+      transform: translateY(-2px);
+    }
+
+    .interaction-btn.liked {
+      background: rgba(255, 212, 0, 0.2);
+      color: var(--yellow);
+    }
+
+    .interaction-btn i {
+      font-size: 14px;
+    }
+
+    .share-menu {
+      position: absolute;
+      background: #070707;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 12px;
+      min-width: 150px;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .share-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .share-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 0;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s ease;
+    }
+
+    .share-option:hover {
+      color: var(--yellow);
+    }
+
+    .share-option i {
+      font-size: 14px;
+      width: 16px;
+    }
+
+    .video-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .video-btn {
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      justify-content: center;
+    }
+    
+    .video-btn-primary {
+      background: var(--yellow);
+      color: #111;
+    }
+    
+    .video-btn-primary:hover {
+      background: #ffc800;
+      transform: translateY(-2px);
+    }
+    
+    .video-btn-outline {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .video-btn-outline:hover {
+      border-color: var(--yellow);
+      color: #fff;
+    }
+    
+    .video-btn-small {
+      padding: 8px 14px;
+      font-size: 11px;
+      flex: 0 1 auto;
+    }
+
+    /* VIDEO THUMBNAIL RESPONSIVE STYLES */
+    .video-thumbnail img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .video-thumbnail:hover img {
+      transform: scale(1.05);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .video-thumbnail img {
+        height: 100px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .video-thumbnail img {
+        height: 90px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .video-thumbnail img {
+        height: 80px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .video-thumbnail img {
+        height: 70px;
+      }
+    }
+
+    /* ========== KUCH KAR INDIA ========== */
+    .kk{
+      background:#ffffff;
+      color:#111;
+      position: relative;
+      padding: 60px 0;
+    }
+    .kk-panel{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px 24px;
+      box-sizing:border-box;
+      position:relative;
+      overflow: hidden;
+    }
+
+    .kk-panel-1{
+      background:#ffffff;
+    }
+    .kk-top{
+      max-width:960px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:260px minmax(0,1fr);
+      gap:20px;
+      align-items:center;
+    }
+    .kk-logo-box{max-width:240px;}
+    .kk-logo-box img{width:100%;height:auto;display:block;}
+    .kk-tag{
+      font-family:Poppins,sans-serif;
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:0.18em;
+      color:var(--red-dark);
+      margin-bottom:6px;
+    }
+    .kk-title{
+      font-family:Poppins,sans-serif;
+      font-size:26px;
+      color:var(--red-dark);
+      margin-bottom:8px;
+    }
+    .kk-lead{
+      font-size:14px;
+      color:#555;
+      max-width:640px;
+    }
+    .kk-btn-row{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .kk-btn{
+      border:none;
+      border-radius:8px;
+      padding:11px 16px;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition: all 0.2s ease;
+    }
+    .kk-btn-primary{background:var(--red);color:#fff;}
+    .kk-btn-primary:hover {
+      background: #d32f2f;
+      transform: translateY(-2px);
+    }
+    .kk-btn-outline{
+      background:#fff;
+      color:#111;
+      border:2px solid #eee;
+    }
+    .kk-btn-outline:hover {
+      border-color: var(--red);
+    }
+
+
+
+
+    /* JOIN / CONTACT */
+    .join-grid{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns:1.05fr 0.95fr;
+      gap:20px;
+    }
+    .pill-list{
+      list-style:none;
+      margin:8px 0 0;
+      padding:0;
+      display:grid;
+      gap:6px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .pill-list li::before{
+      content:"• ";
+      color:var(--yellow);
+    }
+    .form{
+      background:#070707;
+      border-radius:14px;
+      padding:18px 18px 20px;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    .form label{
+      display:block;
+      font-size:12px;
+      margin-bottom:4px;
+      color:var(--muted);
+    }
+    .form input,.form textarea{
+      width:100%;
+      padding:12px 14px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:#050505;
+      color:#eee;
+      font-family:inherit;
+      font-size:14px;
+      margin-bottom:16px;
+      outline:none;
+      transition: border-color 0.2s ease;
+    }
+    .form input:focus, .form textarea:focus {
+      border-color: var(--yellow);
+    }
+    .form textarea{min-height:120px;resize:vertical;}
+    .form button{margin-top:4px;width:100%;}
+
+    /* FIXED MAP EMBED */
+    .map-container {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+      height: 260px;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: transparent;
+      z-index: 1;
+      cursor: pointer;
+    }
+    
+    .map-link {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      text-decoration: none;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s ease;
+    }
+    
+    .map-link:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
+    
+    /* UPDATED QR CODE SECTION */
+    .qr-section {
+      margin-top: 12px;
+      background: linear-gradient(135deg, #0a1a3a 0%, #1f3566 100%);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .qr-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: var(--sbi-red);
+      border-radius: 50%;
+      opacity: 0.1;
+      z-index: 0;
+    }
+    
+    .qr-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .sbi-logo {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--sbi-blue), #2a4a8c);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 900;
+      font-size: 24px;
+      box-shadow: 0 6px 20px rgba(31, 53, 102, 0.4);
+    }
+    
+    .qr-header-text h3 {
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      font-size: 20px;
+      margin: 0 0 5px 0;
+      font-weight: 700;
+    }
+    
+    .qr-header-text p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      margin: 0;
+    }
+    
+    .qr-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .qr-image-container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      max-width: 280px;
+      width: 100%;
+    }
+    
+    .qr-image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    
+    .qr-details {
+      text-align: center;
+      color: white;
+    }
+    
+    .qr-details h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--yellow);
+    }
+    
+    .qr-details p {
+      margin: 8px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    .upi-id {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px 20px;
+      border-radius: 10px;
+      margin: 15px 0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .upi-id:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .upi-id strong {
+      color: var(--yellow);
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .payment-apps {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .payment-app {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      font-size: 12px;
+    }
+    
+    .payment-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .payment-app:hover .payment-icon {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .qr-caption {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* LINKING / QUICK LINKS */
+    #linking .inner{
+      max-width:var(--max-w);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    #linking .sec-title{font-size:18px;margin:0;color:#fff;font-weight:700}
+    .linking-nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .linking-nav a{
+      color:var(--muted);
+      padding:10px 16px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:rgba(255,255,255,0.03);
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:0.06em;
+      transition:all .18s ease;
+      display:inline-block;
+      font-size: 13px;
+    }
+    .linking-nav a:hover{
+      color:var(--yellow);
+      border-color:rgba(255,212,0,0.25);
+      background:rgba(255,212,0,0.08);
+      transform:translateY(-2px);
+    }
+
+    /* ========== IMPROVED FOOTER ========== */
+    footer {
+      background: #040404;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 60px 24px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+    }
+    
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-col h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--yellow);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--yellow);
+    }
+    
+    .footer-about {
+      max-width: 300px;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+    
+    .footer-logo-img {
+      width: 87px;
+      height: 64px;
+      border-radius: 0;
+      border: none;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .footer-logo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .footer-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .footer-logo-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+      line-height: 1.1;
+    }
+    
+    .footer-logo-subtitle {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+    
+    .footer-about-text {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-social a:hover {
+      background: var(--yellow);
+      color: #111;
+      transform: translateY(-3px);
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: var(--muted);
+      font-size: 14px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .footer-links a:hover {
+      color: var(--yellow);
+      transform: translateX(5px);
+    }
+    
+    .footer-links a i {
+      font-size: 12px;
+      color: var(--yellow);
+      opacity: 0.7;
+    }
+    
+    .footer-contact {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-contact li {
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    
+    .footer-contact i {
+      color: var(--yellow);
+      font-size: 16px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    
+    .footer-contact-text {
+      flex: 1;
+    }
+    
+    .footer-contact-title {
+      font-size: 13px;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    
+    .footer-contact-info {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    
+    .footer-contact-info a {
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+    
+    .footer-contact-info a:hover {
+      color: var(--yellow);
+    }
+    
+    .footer-newsletter {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 10px;
+    }
+    
+    .footer-newsletter p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+    
+    .footer-newsletter-form {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .footer-newsletter-input {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    
+    .footer-newsletter-input:focus {
+      border-color: var(--yellow);
+    }
+    
+    .footer-newsletter-btn {
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: var(--yellow);
+      color: #111;
+      border: none;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    
+    .footer-newsletter-btn:hover {
+      background: #ffc800;
+      transform: translateY(-2px);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .footer-copyright {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    .footer-copyright strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    
+    .footer-legal {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .footer-legal a {
+      font-size: 12px;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+    
+    .footer-legal a:hover {
+      color: var(--yellow);
+    }
+    
+    .footer-certifications {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .footer-cert {
+      font-size: 10px;
+      padding: 6px 12px;
+      background: rgba(255, 212, 0, 0.1);
+      border-radius: 20px;
+      color: var(--yellow-soft);
+      border: 1px solid rgba(255, 212, 0, 0.2);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    
+    .footer-back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--yellow);
+      color: #111;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      z-index: 90;
+      opacity: 0;
+      transform: translateY(20px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .footer-back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .footer-back-to-top:hover {
+      background: #ffc800;
+      transform: translateY(-5px);
+    }
+
+    /* ANIMATIONS / FADEIN */
+    .fade-in{
+      opacity:0;
+      transform:translateY(30px);
+      transition:opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.animate{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* HERO ANIMATIONS */
+    .hero-left .eyebrow {
+      animation: slideInLeft 0.8s ease-out;
+    }
+
+    .hero-left .federation-line {
+      animation: slideInRight 1s ease-out 0.2s both;
+    }
+
+    .hero-left .big-title .line-white {
+      animation: slideInUp 1.2s ease-out 0.4s both;
+    }
+
+    .hero-left .big-title .line-yellow {
+      animation: slideInUp 1.2s ease-out 0.6s both;
+    }
+
+    .hero-left .lead {
+      animation: fadeInUp 1s ease-out 0.8s both;
+    }
+
+    .hero-left .cta-row {
+      animation: slideInUp 1s ease-out 1s both;
+    }
+
+    .hero-left .hero-note {
+      animation: fadeIn 1s ease-out 1.2s both;
+    }
+
+    .hero-right {
+      animation: slideInRight 1.4s ease-out 0.3s both;
+    }
+
+    /* CARD ANIMATIONS */
+    .card {
+      animation: fadeInUp 0.8s ease-out both;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+    .card:nth-child(7) { animation-delay: 0.7s; }
+    .card:nth-child(8) { animation-delay: 0.8s; }
+    .card:nth-child(9) { animation-delay: 0.9s; }
+    .card:nth-child(10) { animation-delay: 1.0s; }
+
+    /* VIDEO CARD ANIMATIONS */
+    .video-card {
+      animation: scaleIn 0.8s ease-out both;
+    }
+
+    .video-card:nth-child(1) { animation-delay: 0.2s; }
+    .video-card:nth-child(2) { animation-delay: 0.4s; }
+    .video-card:nth-child(3) { animation-delay: 0.6s; }
+
+    /* BUTTON ENHANCED ANIMATIONS */
+    .btn:hover {
+      animation: buttonPulse 0.6s ease-out;
+    }
+
+    /* KEYFRAME ANIMATIONS */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes buttonPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* MOBILE MENU ANIMATION */
+    .mobile-nav {
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* ENHANCED HOVER EFFECTS */
+    .card:hover {
+      animation: cardHover 0.3s ease-out;
+    }
+
+    @keyframes cardHover {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-5px) scale(1.02); }
+    }
+
+    .video-card:hover {
+      animation: videoCardHover 0.4s ease-out;
+    }
+
+    @keyframes videoCardHover {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-5px) scale(1.02); }
+    }
+
+    /* ACCORDION STYLES */
+    .accordion-toggle {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      padding: 0;
+      margin: 0 0 10px;
+    }
+
+    .accordion-toggle:hover {
+      color: var(--yellow);
+    }
+
+    .toggle-icon {
+      transition: transform 0.3s ease;
+      font-size: 18px;
+      color: var(--yellow);
+    }
+
+    .accordion-toggle.active .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .programs-cards {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out;
+    }
+
+    .programs-cards.expanded {
+      max-height: 5000px; /* Large enough to accommodate all content */
+    }
+    @keyframes kkArrow{
+      0%{transform:translateX(0);}
+      50%{transform:translateX(6px);}
+      100%{transform:translateX(0);}
+    }
+
+
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .desktop-nav {
+        gap: 20px;
+      }
+      
+      .nav-links {
+        gap: 20px;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .hero-grid{grid-template-columns:1fr;gap:26px;}
+      .hero-right{height:360px;}
+      .mobile-toggle{display:block;}
+      .desktop-nav{display:none;}
+      .mobile-nav{display:block;}
+      .join-grid{grid-template-columns:1fr;}
+      .qr-content {
+        flex-direction: column;
+      }
+      .kk-top {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .kk-logo-box {
+        margin: 0 auto;
+      }
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+    }
+    
+    @media (max-width: 800px){
+      .big-title .line-white,
+      .big-title .line-yellow{font-size:56px;}
+      #linking .inner{flex-direction:column;align-items:flex-start}
+      .linking-nav{width:100%}
+      .linking-nav a{flex:0 0 auto}
+      .kk-panel{padding:24px 16px;}
+      .kk-hint{right:16px;bottom:14px;}
+      .kk-top{grid-template-columns:1fr;gap:18px;}
+      .video-controls {
+        flex-direction: column;
+      }
+      
+      .video-btn {
+        width: 100%;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .footer-newsletter-form {
+        flex-direction: column;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      .footer-legal {
+        justify-content: center;
+      }
+      .footer-certifications {
+        justify-content: center;
+      }
+      .footer-back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .hero {
+        padding: 60px 20px 80px;
+      }
+      
+      .big-title .line-white,
+      .big-title .line-yellow {
+        font-size: 42px;
+      }
+      
+      .cta-row {
+        flex-direction: column;
+      }
+      
+      .kk-btn-row {
+        flex-direction: column;
+      }
+      
+      .kk-btn {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .nav-inner {
+        padding: 0 20px;
+      }
+      
+      section.sec {
+        padding: 40px 20px;
+      }
+      
+      .payment-apps {
+        gap: 10px;
+      }
+      
+      .payment-app {
+        font-size: 10px;
+      }
+      
+      .payment-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+      
+      .play-button {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+      }
+      
+      footer {
+        padding: 50px 20px 25px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .big-title .line-white,
+      .big-title .line-yellow {
+        font-size: 36px;
+      }
+      
+      .hero-right {
+        height: 280px;
+      }
+      
+      .qr-section {
+        padding: 20px 15px;
+      }
+      
+      .qr-header-text h3 {
+        font-size: 18px;
+      }
+      
+      .kk {
+        height: 150vh;
+      }
+      
+      .footer-social a {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+      }
+      
+      .footer-back-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+    }
+    
+    /* Fix for mobile touch scrolling */
+    @media (hover: none) and (pointer: coarse) {
+      .kk-panel {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- IMPROVED NAVBAR -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo">
+          <img src="logo.png" alt="Peace Musick Records logo">
+        </div>
+       
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="desktop-nav">
+    <ul class="nav-links">
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="bookus.html" target="_blank">Book Us For</a></li>
+      <li><a href="#kuchkar">Kuch Kar India</a></li>
+      <li><a href="#pmrmusic">Music</a></li>
+      <li><a href="#join">Contact</a></li>
+    </ul>`    
+        <div class="nav-cta">
+          <button class="nav-btn nav-btn-primary" data-target="join">Donate Now</button>
+          <button class="nav-btn nav-btn-outline" data-target="kuchkar">Stand With Us</button>
+        </div>
+      </div>
+      
+      <!-- Mobile Toggle -->
+      <button class="mobile-toggle" id="mobileToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+      <ul class="mobile-nav-links">
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="bookus.html" target="_blank">Book Us For</a></li>
+        <li><a href="#kuchkar">Kuch Kar India</a></li>
+        <li><a href="#pmrmusic">Music</a></li>
+        <li><a href="#join">Contact</a></li>
+      </ul>
+      <div class="mobile-nav-cta">
+        <button class="btn btn-primary" data-target="join" style="width:100%">Donate Now</button>
+        <button class="btn btn-ghost" data-target="kuchkar" style="width:100%">Join Campaign</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="hero fade-in">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="eyebrow">EST. 2025 · JAMMU</div>
+        <div class="federation-line" style="font-family: Anton, sans-serif; font-size: 32px; font-weight: 700; color: var(--yellow); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 3px; line-height: 1.1;">
+          HIPHOP NGO FEDERATION 
+          <br>
+          ART + ACTIVISM + PSYCHOLOGY
+        </div>
+        <h1 class="big-title">
+          <span class="line-white">WORLD'S FIRST</span>
+          <span class="line-yellow">HIP-HOP NGO</span>
+        </h1>
+        <p class="lead">
+          PMR India empowers youth through hip-hop and psychology against addiction and hopelessness.
+        </p>
+        <div class="cta-row">
+          <button class="btn btn-primary" data-target="kuchkar">Explore the campaign</button>
+          <button class="btn btn-ghost" data-target="pmrmusic">Watch / Listen</button>
+        </div>
+        <p class="hero-note">₹25L+ personal & community investment · ₹1Cr+ collective value · Section 8 registered.</p>
+      </div>
+
+      <div class="hero-right" aria-label="Durga Nagri poster">
+        <img src="jammukuchkar.jpeg" alt="Durga Nagri – PMR crew">
+      </div>
+    </div>
+  </main>
+
+  <!-- OUR PROGRAMS -->
+  <section class="sec fade-in" id="about">
+    <div class="inner">
+      <div class="sec-eyebrow">OUR PROGRAMS</div>
+      <h2 class="sec-title accordion-toggle" id="programs-toggle">
+        <span class="toggle-text">Our Programs</span>
+        <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+      </h2>
+      <p class="sec-text">
+        PMR India and HipHop NGO Federation offer comprehensive youth empowerment programs
+        combining hip-hop culture, psychology, and community action to address addiction, mental health, and social issues.
+      </p>
+
+      <div class="cards programs-cards" id="programs-cards">
+        <div class="card">
+          <h4>🧠 Creative Empowerment Labs</h4>
+          <p>Hip-Hop • Rap • Spoken Word • Beat-Making • Storytelling<br><br>
+          Youth explore identity, voice, trauma, and resilience through creative expression. These labs use psychology-aware facilitation, cyphers, writing circles, rhythm exercises, and reflection spaces to help participants communicate safely. Art becomes a medium for emotional release, coping, and self-confidence — transforming pain into purpose and creativity into leadership.</p>
+        </div>
+
+        <div class="card">
+          <h4>🧠 Mental Health & Awareness Circles</h4>
+          <p>Therapy-informed peer spaces guided by trained professionals and partner psychologists.<br><br>
+          These circles focus on emotional literacy, stress, addiction awareness, relationships, anxiety, and real-life struggles faced by youth. Participants learn grounding tools, coping strategies, reflective dialogue, and stigma-free communication. We ensure ethical boundaries, confidentiality, referral pathways, and collaboration with qualified mental-health professionals for deeper support when required.</p>
+        </div>
+
+        <div class="card">
+          <h4>✊ Social Activism & Leadership Training</h4>
+          <p>Workshops on awareness, youth rights, social change, campaign building, and ethical activism.<br><br>
+          Young people learn how to address addiction, discrimination, inequality, and cultural issues responsibly through art, dialogue, documentation, and community work. The program builds critical thinking, empathy, and leadership — ensuring activism remains responsible, compassionate, and solution-driven, not reactionary.</p>
+        </div>
+
+        <div class="card">
+          <h4>🎥 Digital Expression & Media Lab</h4>
+          <p>Media literacy • Ethical content creation • Storytelling for change<br><br>
+          Youth learn to create meaningful digital content — documentaries, reels, audio pieces, blogs, music videos, and social impact campaigns. Training includes ethics, consent, safeguarding, narrative building, editing basics, and responsible online presence. Creativity meets accountability — making the internet a safer and more conscious space.</p>
+        </div>
+
+        <div class="card">
+          <h4>🎓 Internships & Youth Fellowships</h4>
+          <p>Hands-on learning with real-world social action projects.<br><br>
+          Students and emerging leaders work directly with programs in mental health, outreach, documentation, event production, research, creative work, and campaign building. Fellows receive mentoring, exposure to community-based work, reflective supervision, and opportunities to collaborate with psychologists, artists, NGOs, and cultural leaders — developing both skills and purpose.</p>
+        </div>
+
+        <div class="card">
+          <h4>🎶 Music & Culture Development</h4>
+          <p>Artist mentorship • Cyphers • Studio guidance • Stage opportunities<br><br>
+          We support artists with creative direction, lyrical development, conscious writing, and performance training — while promoting collaboration across cities and independent communities. Partnerships help artists access studios, music video opportunities, networks, performance spaces, and ethical promotion — ensuring growth without exploitation. Culture stays rooted, supportive, and pure.</p>
+        </div>
+
+        <div class="card">
+          <h4>🏫 School & College Outreach Programs</h4>
+          <p>Student-focused workshops on mental health, addiction awareness, identity, peer influence, creativity, and resilience.<br><br>
+          Sessions blend storytelling, psychology, hip-hop culture, and real-world dialogue — not lectures. Programs are designed with youth-safe content, safeguarding ethics, and professional guidance, helping institutions build healthier communication with students.</p>
+        </div>
+
+        <div class="card">
+          <h4>🤝 Community Support & Outreach</h4>
+          <p>Grassroots engagement — listening before speaking.<br><br>
+          We work directly in communities, streets, and public spaces to build trust, awareness, and connection. Activities may include conversations, artistic activations, documentation, referral support, mental-health awareness, and addiction prevention. The focus is dignity, inclusion, and meeting people where they truly are.</p>
+        </div>
+
+        <div class="card">
+          <h4>🧪 Research, Training & Knowledge Exchange</h4>
+          <p>We document stories, experiences, youth trends, and cultural psychology to build better programs.<br><br>
+          Workshops and training modules are offered for NGOs, social workers, students, artists, and mental-health professionals — helping them understand youth culture, hip-hop spaces, addiction risk factors, trauma awareness, and ethical field practice. Knowledge strengthens change.</p>
+        </div>
+
+        <div class="card">
+          <h4>🩺 Psychological Support & Consultation Network</h4>
+          <p>Guided by partner psychologists and trained mental-health professionals.<br><br>
+          This initiative ensures ethical referral pathways, confidential support spaces, awareness sessions, and basic psychological-first-aid learning. We promote therapy-informed practice, recovery-support awareness, and community sensitivity — ensuring that youth and communities never feel alone in their journey toward healing and safer choices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="sec fade-in" id="whychoose">
+    <div class="inner">
+      <div class="sec-eyebrow">WHY CHOOSE US</div>
+      <h2 class="sec-title">Why PMR India Stands Out</h2>
+      <p class="sec-text">
+        We are not just a studio or an agency. We are a movement using hip-hop, psychology and media to create impact.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h4>Culture + Skill</h4>
+          <p>Deep understanding of hip-hop culture combined with professional engineering and digital marketing skills.</p>
+        </div>
+        <div class="card">
+          <h4>Impact Driven</h4>
+          <p>Every project is designed to add value — to the artist, the audience and the community.</p>
+        </div>
+        <div class="card">
+          <h4>End-to-End Support</h4>
+          <p>From recording and mixing to strategy and SEO, we stay with you through the full campaign.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KUCH KAR INDIA -->
+  <section class="kk" id="kuchkar">
+    <!-- PANEL 1 -->
+    <div class="kk-panel kk-panel-1">
+      <div class="kk-top">
+        <div class="kk-logo-box">
+          <img src="kuch kar india .png" alt="Kuch Kar India logo">
+        </div>
+        <div>
+          <div class="kk-tag">national campaign</div>
+          <h1 class="kk-title">Kuch Kar India ·Aay Ho Toh Kuch Kar K Jao</h1>
+          <p class="kk-lead">
+            The red and white army stands strong against the trade of addiction, providing evidence-based psychological therapies, leadership training, and personality development programs. Our multi-pronged approach supports clients and patients on the path to recovery, using both proven therapies and our own innovative methods.
+Beyond treatment, we are building a chain of active social workers — individuals committed to shaping modern India, making it a better place to exist, forever and for our upcoming generations. Together, we empower youth, foster resilience, and cultivate a movement that transforms lives, communities, and the future of our nation.
+          </p>
+          <div class="kk-btn-row">
+            <button class="kk-btn kk-btn-primary" onclick="window.open('kuch-kar-more-info.html', '_blank')">Click Here for More Info</button>
+            <button class="kk-btn kk-btn-outline" data-target="join">Join as artist / volunteer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PMR MUSIC – YOUTUBE VIDEOS -->
+  <section class="sec fade-in" id="pmrmusic">
+    <div class="inner">
+      <div class="sec-eyebrow">PMR MUSIC</div>
+      <h2 class="sec-title">The soundtrack of the movement</h2>
+      <p class="sec-text">
+        Every track is more than a drop; it's a document of a city, a mindset, a fight. Peace Musick Records releases
+        are used inside workshops, campaigns and live shows to open conversations that normal lectures can't.
+      </p>
+
+      <div class="video-section">
+        <div class="video-grid">
+          <!-- Video 1: K0qWddTGEIM -->
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="harkat-poster.jpg" alt="Harkat - MC Moni">
+              <button class="video-btn video-btn-outline video-btn-small youtube-btn" onclick="window.open('https://www.youtube.com/watch?v=K0qWddTGEIM', '_blank')">
+                <i class="fab fa-youtube"></i> Watch on YouTube
+              </button>
+            </div>
+          </div>
+
+          <!-- Video 2: HPRJoq2Tw4I -->
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="tu mujhe janta nahi.jpeg" alt=" - MC Moni">
+              <button class="video-btn video-btn-outline video-btn-small youtube-btn" onclick="window.open('https://youtu.be/rvdHqWmzltQ?si=xasm40-8Ddxllxll', '_blank')">
+                <i class="fab fa-youtube"></i> Watch on YouTube
+              </button>
+            </div>
+          </div>
+
+          <!-- Video 3: rvdHqWmzltQ -->
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="durga-nagri-wide.jpg" alt="TU Mujhe Janta Na - MC Moni">
+              <button class="video-btn video-btn-outline video-btn-small youtube-btn" onclick="window.open('https://www.youtube.com/watch?v=rvdHqWmzltQ', '_blank')">
+                <i class="fab fa-youtube"></i> Watch on YouTube
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="caption-small" style="margin-top:16px;">
+          Full catalogue available on YouTube / streaming as <strong>Peace Musick Records</strong>. These songs fuel
+          Jaago Jammu & Kuch Kar India events across the map.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / SUPPORT + QR + MAP -->
+  <section class="sec" id="join">
+    <div class="inner">
+      <div class="sec-eyebrow">CONTACT & SUPPORT</div>
+      <h2 class="sec-title">Reach out · Visit · Support</h2>
+      <p class="sec-text">
+        For bookings, collaborations, workshops or donations, use the form or details below.
+      </p>
+
+      <div class="join-grid">
+        <!-- LEFT: MAP + QR -->
+        <div>
+          <div class="card">
+            <h4>Visit / Location</h4>
+            <p class="caption-small">
+              HipHop NGO Federation · Jammu · Official SBI linked location.
+            </p>
+            
+            <!-- FIXED MAP CONTAINER -->
+            <div class="map-container">
+              <!-- Google Maps Embed - Fixed with correct location -->
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3372.036225468394!2d76.57615077602325!3d32.28916900907741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391ce38b5d5e2f61%3A0xf7fa5d7a9d1f9f7f!2sJammu%2C%20Jammu%20and%20Kashmir!5e0!3m2!1sen!2sin!4v1698776325187!5m2!1sen!2sin"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="PMR India Location in Jammu"
+              ></iframe>
+              
+              <!-- Overlay to make entire map clickable -->
+              <a href="https://maps.app.goo.gl/fNTSDKNKv9Xn2BQe6?g_st=ac" target="_blank" rel="noopener" class="map-overlay"></a>
+              
+              <!-- Link to open in Google Maps -->
+              <a href="https://maps.app.goo.gl/fNTSDKNKv9Xn2BQe6?g_st=ac" target="_blank" rel="noopener" class="map-link">
+                <i class="fas fa-external-link-alt"></i> Open in Maps
+              </a>
+            </div>
+            
+            <p class="caption-small" style="margin-top:6px;">
+              <a href="https://maps.app.goo.gl/fNTSDKNKv9Xn2BQe6?g_st=ac" target="_blank" rel="noopener">
+                <i class="fas fa-map-marker-alt"></i> Open in Google Maps
+              </a>
+            </p>
+          </div>
+
+          <!-- UPDATED QR CODE SECTION -->
+          <div class="qr-section">
+            <div class="qr-header">
+              <div class="sbi-logo">SBI</div>
+              <div class="qr-header-text">
+                <h3>HIPHOP NGO FEDERATION</h3>
+                <p>SCAN & PAY · OFFICIAL DONATIONS</p>
+              </div>
+            </div>
+            
+            <div class="qr-content">
+              <div class="qr-image-container">
+                <!-- Replace with your actual QR code image -->
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=UPI%3Ahiphopngofederation%40sbi&bgcolor=ffffff&color=1f3566&margin=10&qzone=1" 
+                     alt="SBI UPI QR Code for HipHop NGO Federation">
+              </div>
+              
+              <div class="qr-details">
+                <h4>Scan & Support the Movement</h4>
+                <p>Use any UPI app to scan and donate directly to</p>
+                
+                <div class="upi-id" id="upiId">
+                  <strong>UPI ID: hiphopngofederation@sbi</strong>
+                </div>
+                
+                <p>Your donations support hip-hop workshops, anti-drug campaigns, and youth empowerment programs across India.</p>
+                
+                <div class="payment-apps">
+                  <div class="payment-app">
+                    <div class="payment-icon" style="background: linear-gradient(135deg, #1a73e8, #4285f4);">
+                      <i class="fab fa-google-pay"></i>
+                    </div>
+                    <span>GPay</span>
+                  </div>
+                  
+                  <div class="payment-app">
+                    <div class="payment-icon" style="background: linear-gradient(135deg, #00b9f1, #0086f4);">
+                      <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <span>BHIM</span>
+                  </div>
+                  
+                  <div class="payment-app">
+                    <div class="payment-icon" style="background: linear-gradient(135deg, #003082, #1f3566);">
+                      <i class="fas fa-university"></i>
+                    </div>
+                    <span>yono SBI</span>
+                  </div>
+                  
+                  <div class="payment-app">
+                    <div class="payment-icon" style="background: linear-gradient(135deg, #003082, #1f3566);">
+                      <i class="fas fa-wallet"></i>
+                    </div>
+                    <span>SBI Pay</span>
+                  </div>
+                  
+                  <div class="payment-app">
+                    <div class="payment-icon" style="background: linear-gradient(135deg, #002e6d, #013a7a);">
+                      <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <span>Paytm</span>
+                  </div>
+                </div>
+                
+                <div class="qr-caption">
+                  <p><strong>12A & 80G Certified</strong> · All donations are tax exempt under Section 80G</p>
+                  <p style="margin-top: 5px; font-size: 11px;">"AAY HO TOH KUCH KAR K JAO"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: FORM -->
+        <div class="form">
+          <h4 style="font-family:Poppins,sans-serif;font-size:15px;color:var(--yellow);margin:0 0 10px;">
+            Send us a message
+          </h4>
+          <form id="contactForm">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" required>
+
+            <label for="role">You are (Artist / College / NGO / Brand / Govt / Other)</label>
+            <input id="role" type="text" placeholder="Your role" required>
+
+            <label for="contact">Email / Phone</label>
+            <input id="contact" type="text" placeholder="How do we reach you?" required>
+
+            <label for="message">How would you like to support / work with us?</label>
+            <textarea id="message" placeholder="Tell us about your idea, city, or collaboration." required></textarea>
+
+            <button type="submit" class="btn btn-primary">Send message</button>
+          </form>
+
+          <p class="caption-small" style="margin-top:8px;">
+            Or write to <strong>info@pmrindia.org</strong> with subject
+            <strong>"Mission 2030 – Collaboration / Services"</strong>.
+          </p>
+          
+          <div class="social-icons" style="margin-top: 15px; display: flex; gap: 15px; justify-content: center;">
+            <a href="https://www.youtube.com/@PeaceMusickRecords" target="_blank" title="YouTube" style="color: var(--muted); font-size: 20px; transition: color 0.2s ease;"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/pmrindia" target="_blank" title="Instagram" style="color: var(--muted); font-size: 20px; transition: color 0.2s ease;"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/pmrindia" target="_blank" title="Facebook" style="color: var(--muted); font-size: 20px; transition: color 0.2s ease;"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/pmrindia" target="_blank" title="Twitter" style="color: var(--muted); font-size: 20px; transition: color 0.2s ease;"><i class="fab fa-twitter"></i></a>
+            <a href="https://open.spotify.com/artist/pmr" target="_blank" title="Spotify" style="color: var(--muted); font-size: 20px; transition: color 0.2s ease;"><i class="fab fa-spotify"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- QUICK LINKS -->
+    <section class="sec fade-in" id="linking">
+      <div class="inner">
+        <div class="sec-title">Quick Links</div>
+        <nav class="linking-nav" style="margin-top:10px;">
+          <a href="programs.html">OUR PROGRAMS</a>
+          <a href="bookus.html" target="_blank">BOOK US FOR</a>
+          <a href="#kuchkar">KUCH KAR INDIA</a>
+          <a href="#pmrmusic">PMR MUSIC</a>
+          <a href="#join">CONTACT / SUPPORT</a>
+        </nav>
+      </div>
+    </section>
+
+  <!-- IMPROVED FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <!-- Column 1: About & Social -->
+        <div class="footer-col footer-about">
+          <div class="footer-logo">
+            <div class="footer-logo-img">
+              <img src="logo.png" alt="PMR India Logo">
+            </div>
+            <div class="footer-logo-text">
+              <div class="footer-logo-title">PMR INDIA</div>
+              <div class="footer-logo-subtitle">PEACE MUSICK RECORDS</div>
+            </div>
+          </div>
+          <p class="footer-about-text">
+            World's first hip-hop NGO empowering youth through music, psychology, and community action against addiction and hopelessness.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.youtube.com/@HIPHOPNGO" target="_blank" title="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.instagram.com/jammuwalaflavour?igsh=MW1neWlmY3A0eHc4Yw==" target="_blank" title="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/pmrindia" target="_blank" title="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+           
+           
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#about"><i class="fas fa-chevron-right"></i> Our Programs</a></li>
+            <li><a href="bookus.html" target="_blank"><i class="fas fa-chevron-right"></i> Book Us For</a></li>
+            <li><a href="#kuchkar"><i class="fas fa-chevron-right"></i> Kuch Kar India</a></li>
+            <li><a href="#pmrmusic"><i class="fas fa-chevron-right"></i> PMR Music</a></li>
+            <li><a href="#join"><i class="fas fa-chevron-right"></i> Contact & Support</a></li>
+            <li><a href="#join"><i class="fas fa-chevron-right"></i> Donate Now</a></li>
+            <li><a href="#kuchkar"><i class="fas fa-chevron-right"></i> Join Campaign</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Contact Info -->
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="footer-contact-text">
+                <div class="footer-contact-title">Address</div>
+                <div class="footer-contact-info">
+                  HipHop NGO Federation<br>
+                  Jammu, Jammu & Kashmir<br>
+                  India - 180001
+                </div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <div class="footer-contact-text">
+                <div class="footer-contact-title">Email</div>
+                <div class="footer-contact-info">
+                  <a href="mailto:info@pmrindia.org">hiphopngofederation@gmail.com</a><br>
+                  <a href="mailto:support@pmrindia.org">kuchkarindia@gmail.com</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <div class="footer-contact-text">
+                <div class="footer-contact-title">Phone</div>
+                <div class="footer-contact-info">
+                  <a href="tel:+919123456789">+91 77808 64603</a><br>
+                  <a href="tel:+919876543210">+91 9086560187</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2025 <strong> HipHop NGO Federation</strong>. All rights reserved.
+        </div>
+        
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Code of Conduct</a>
+          <a href="#">Transparency Report</a>
+        </div>
+        
+        <div class="footer-certifications">
+          <span class="footer-cert">12A & 80G Certified</span>
+          <span class="footer-cert">Section 8 Company</span>
+          <span class="footer-cert">Est. 2018</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="footer-back-to-top" id="backToTop">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </footer>
+
+  <script>
+    // ========== MOBILE NAVIGATION ==========
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    
+    if (mobileToggle && mobileNav) {
+      mobileToggle.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+        const icon = mobileToggle.querySelector('i');
+        if (mobileNav.classList.contains('active')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+      
+      document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.remove('active');
+          mobileToggle.querySelector('i').classList.remove('fa-times');
+          mobileToggle.querySelector('i').classList.add('fa-bars');
+        });
+      });
+    }
+    
+    // ========== ACTIVE NAV LINK HIGHLIGHTING ==========
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
+    
+    function highlightNavLink() {
+      let scrollY = window.pageYOffset;
+      
+      sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`.nav-links a[href*="${sectionId}"], .mobile-nav-links a[href*="${sectionId}"]`);
+        
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          navLink.classList.add('active');
+        } else {
+          navLink.classList.remove('active');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', highlightNavLink);
+    
+    // ========== SMOOTH SCROLLING ==========
+    document.querySelectorAll('[data-target]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = el.getAttribute('data-target');
+        const target = document.getElementById(id);
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 70,
+            behavior: 'smooth'
+          });
+          
+          if (mobileNav && mobileNav.classList.contains('active')) {
+            mobileNav.classList.remove('active');
+            mobileToggle.querySelector('i').classList.remove('fa-times');
+            mobileToggle.querySelector('i').classList.add('fa-bars');
+          }
+        }
+      });
+    });
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({
+            top: target.offsetTop - 70,
+            behavior: 'smooth'
+          });
+          
+          if (mobileNav && mobileNav.classList.contains('active')) {
+            mobileNav.classList.remove('active');
+            mobileToggle.querySelector('i').classList.remove('fa-times');
+            mobileToggle.querySelector('i').classList.add('fa-bars');
+          }
+        }
+      });
+    });
+
+    // ========== FADE-IN ANIMATIONS ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+
+
+    // ========== YOUTUBE VIDEO PLAYER INTEGRATION ==========
+    let players = {};
+    let playerReadyCount = 0;
+    const totalPlayers = 3;
+
+    // YouTube API callback
+    function onYouTubeIframeAPIReady() {
+      console.log('YouTube API ready, initializing players...');
+      
+      // Player 1 - K0qWddTGEIM
+      players['player-1'] = new YT.Player('player-1', {
+        height: '100%',
+        width: '100%',
+        videoId: 'K0qWddTGEIM',
+        playerVars: {
+          'autoplay': 0,
+          'controls': 1,
+          'rel': 0,
+          'showinfo': 0,
+          'modestbranding': 1,
+          'playsinline': 1,
+          'enablejsapi': 1
+        },
+        events: {
+          'onReady': function(event) {
+            playerReadyCount++;
+            console.log('Player 1 ready');
+            // Set thumbnail background
+            const container = document.getElementById('video-container-1');
+            const thumbnailUrl = 'images/thumbnail1.jpg';
+            container.style.backgroundImage = `url('${thumbnailUrl}')`;
+            container.style.backgroundSize = 'cover';
+            container.style.backgroundPosition = 'center';
+            // Hide loading indicator
+            document.getElementById('loading-1').style.display = 'none';
+          },
+          'onStateChange': onPlayerStateChange
+        }
+      });
+
+      // Player 2 - HPRJoq2Tw4I
+      players['player-2'] = new YT.Player('player-2', {
+        height: '100%',
+        width: '100%',
+        videoId: 'HPRJoq2Tw4I',
+        playerVars: {
+          'autoplay': 0,
+          'controls': 1,
+          'rel': 0,
+          'showinfo': 0,
+          'modestbranding': 1,
+          'playsinline': 1,
+          'enablejsapi': 1
+        },
+        events: {
+          'onReady': function(event) {
+            playerReadyCount++;
+            console.log('Player 2 ready');
+            const container = document.getElementById('video-container-2');
+            const thumbnailUrl = 'https://img.youtube.com/vi/HPRJoq2Tw4I/maxresdefault.jpg';
+            container.style.backgroundImage = `url('${thumbnailUrl}')`;
+            container.style.backgroundSize = 'cover';
+            container.style.backgroundPosition = 'center';
+            document.getElementById('loading-2').style.display = 'none';
+          },
+          'onStateChange': onPlayerStateChange
+        }
+      });
+
+      // Player 3 - rvdHqWmzltQ
+      players['player-3'] = new YT.Player('player-3', {
+        height: '100%',
+        width: '100%',
+        videoId: 'rvdHqWmzltQ',
+        playerVars: {
+          'autoplay': 0,
+          'controls': 1,
+          'rel': 0,
+          'showinfo': 0,
+          'modestbranding': 1,
+          'playsinline': 1,
+          'enablejsapi': 1
+        },
+        events: {
+          'onReady': function(event) {
+            playerReadyCount++;
+            console.log('Player 3 ready');
+            const container = document.getElementById('video-container-3');
+            const thumbnailUrl = 'images/thumbnail3.jpg';
+            container.style.backgroundImage = `url('${thumbnailUrl}')`;
+            container.style.backgroundSize = 'cover';
+            container.style.backgroundPosition = 'center';
+            document.getElementById('loading-3').style.display = 'none';
+          },
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerStateChange(event) {
+      const playerElement = event.target.getIframe();
+      const playerId = playerElement.id;
+      const overlayId = playerId.replace('player', 'overlay');
+      const overlay = document.getElementById(overlayId);
+      
+      switch(event.data) {
+        case YT.PlayerState.PLAYING:
+          if (overlay) {
+            overlay.classList.add('hidden');
+          }
+          // Pause other players when one starts playing
+          Object.keys(players).forEach(id => {
+            if (id !== playerId && players[id] && players[id].getPlayerState && players[id].getPlayerState() === YT.PlayerState.PLAYING) {
+              players[id].pauseVideo();
+              const otherOverlayId = id.replace('player', 'overlay');
+              const otherOverlay = document.getElementById(otherOverlayId);
+              if (otherOverlay) {
+                otherOverlay.classList.remove('hidden');
+              }
+            }
+          });
+          break;
+          
+        case YT.PlayerState.PAUSED:
+        case YT.PlayerState.ENDED:
+          if (overlay) {
+            overlay.classList.remove('hidden');
+          }
+          break;
+      }
+    }
+
+    // Video control functions
+    function playVideo(playerId) {
+      if (players[playerId] && players[playerId].playVideo) {
+        const overlayId = playerId.replace('player', 'overlay');
+        const overlay = document.getElementById(overlayId);
+        if (overlay) {
+          overlay.classList.add('hidden');
+        }
+        players[playerId].playVideo();
+      } else {
+        console.error('Player not ready:', playerId);
+      }
+    }
+
+    function pauseVideo(playerId) {
+      if (players[playerId] && players[playerId].pauseVideo) {
+        players[playerId].pauseVideo();
+        const overlayId = playerId.replace('player', 'overlay');
+        const overlay = document.getElementById(overlayId);
+        if (overlay) {
+          overlay.classList.remove('hidden');
+        }
+      }
+    }
+
+    // Event listeners for video controls
+    document.addEventListener('click', function(e) {
+      // Play button in overlay
+      if (e.target.closest('.play-button')) {
+        const button = e.target.closest('.play-button');
+        const playerId = button.getAttribute('data-player-id');
+        playVideo(playerId);
+      }
+      
+      // Play button in controls
+      else if (e.target.closest('.video-btn-primary')) {
+        const button = e.target.closest('.video-btn-primary');
+        const playerId = button.getAttribute('data-player-id');
+        playVideo(playerId);
+      }
+      
+      // Pause button in controls
+      else if (e.target.closest('.video-btn-outline')) {
+        const button = e.target.closest('.video-btn-outline');
+        if (button.textContent.includes('Pause')) {
+          const playerId = button.getAttribute('data-player-id');
+          pauseVideo(playerId);
+        }
+      }
+    });
+
+    // Ensure YouTube API is loaded
+    if (typeof YT === 'undefined') {
+      console.log('Loading YouTube API...');
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+
+    // ========== CONTACT FORM ==========
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const contact = document.getElementById('contact').value;
+        alert(`Thank you ${name}! Your message has been sent. We'll contact you at ${contact} soon.`);
+        contactForm.reset();
+      });
+    }
+
+    // ========== NEWSLETTER FORM ==========
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        alert(`Thank you! You've been subscribed to our newsletter with: ${email}`);
+        this.reset();
+      });
+    }
+    
+    // ========== QR CODE COPY FUNCTIONALITY ==========
+    const upiIdElement = document.getElementById('upiId');
+    if (upiIdElement) {
+      upiIdElement.addEventListener('click', function() {
+        const upiId = 'hiphopngofederation@sbi';
+        navigator.clipboard.writeText(upiId).then(() => {
+          const originalText = this.innerHTML;
+          this.innerHTML = '<strong>✓ COPIED! UPI ID: hiphopngofederation@sbi</strong>';
+          this.style.background = 'rgba(46, 125, 50, 0.2)';
+          this.style.borderColor = 'rgba(46, 125, 50, 0.5)';
+          
+          setTimeout(() => {
+            this.innerHTML = originalText;
+            this.style.background = 'rgba(255, 255, 255, 0.1)';
+            this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+          // Fallback for older browsers
+          const textArea = document.createElement('textarea');
+          textArea.value = upiId;
+          document.body.appendChild(textArea);
+          textArea.select();
+          try {
+            document.execCommand('copy');
+            const originalText = this.innerHTML;
+            this.innerHTML = '<strong>✓ COPIED!</strong>';
+            this.style.background = 'rgba(46, 125, 50, 0.2)';
+            this.style.borderColor = 'rgba(46, 125, 50, 0.5)';
+            
+            setTimeout(() => {
+              this.innerHTML = originalText;
+              this.style.background = 'rgba(255, 255, 255, 0.1)';
+              this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            }, 2000);
+          } catch (err) {
+            console.error('Fallback copy failed: ', err);
+          }
+          document.body.removeChild(textArea);
+        });
+      });
+    }
+
+    // ========== BACK TO TOP BUTTON ==========
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    if (backToTopBtn) {
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      });
+      
+      backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    // ========== ACCORDION FUNCTIONALITY ==========
+    const programsToggle = document.getElementById('programs-toggle');
+    const programsCards = document.getElementById('programs-cards');
+
+    if (programsToggle && programsCards) {
+      programsToggle.addEventListener('click', function() {
+        const isExpanded = programsCards.classList.contains('expanded');
+
+        if (isExpanded) {
+          // Collapse
+          programsCards.classList.remove('expanded');
+          programsToggle.classList.remove('active');
+        } else {
+          // Expand
+          programsCards.classList.add('expanded');
+          programsToggle.classList.add('active');
+        }
+      });
+    }
+
+    // ========== INITIALIZE ON PAGE LOAD ==========
+    document.addEventListener('DOMContentLoaded', function() {
+      highlightNavLink();
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(e) {
+        if (mobileNav && mobileNav.classList.contains('active') &&
+            !mobileNav.contains(e.target) &&
+            e.target !== mobileToggle &&
+            !mobileToggle.contains(e.target)) {
+          mobileNav.classList.remove('active');
+          mobileToggle.querySelector('i').classList.remove('fa-times');
+          mobileToggle.querySelector('i').classList.add('fa-bars');
+        }
+      });
+
+      // Show loading indicators initially
+      for (let i = 1; i <= 3; i++) {
+        const loading = document.getElementById(`loading-${i}`);
+        if (loading) {
+          loading.style.display = 'block';
+        }
+      }
+
+      // Check if YouTube API is already loaded
+      if (typeof YT !== 'undefined' && YT.loaded) {
+        onYouTubeIframeAPIReady();
+      }
+
+      // Fallback: Check every 500ms for YouTube API
+      let apiCheckCount = 0;
+      const checkYouTubeAPI = setInterval(() => {
+        if (typeof YT !== 'undefined' && YT.loaded && typeof onYouTubeIframeAPIReady === 'function') {
+          clearInterval(checkYouTubeAPI);
+          onYouTubeIframeAPIReady();
+        }
+        apiCheckCount++;
+        if (apiCheckCount > 20) { // Stop checking after 10 seconds
+          clearInterval(checkYouTubeAPI);
+          console.log('YouTube API failed to load after 10 seconds');
+          // Hide loading indicators
+          for (let i = 1; i <= 3; i++) {
+            const loading = document.getElementById(`loading-${i}`);
+            if (loading) {
+              loading.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Video not available';
+            }
+          }
+        }
+      }, 500);
+    });
+
+    // ========== VIDEO CARD INTERACTIONS ==========
+    // Like button functionality
+    document.querySelectorAll('.like-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const videoId = this.getAttribute('data-video-id');
+        const icon = this.querySelector('i');
+        const countSpan = this.querySelector('span');
+        let count = parseInt(countSpan.textContent);
+
+        if (this.classList.contains('liked')) {
+          // Unlike
+          this.classList.remove('liked');
+          icon.classList.remove('fas');
+          icon.classList.add('far');
+          countSpan.textContent = count - 1;
+        } else {
+          // Like
+          this.classList.add('liked');
+          icon.classList.remove('far');
+          icon.classList.add('fas');
+          countSpan.textContent = count + 1;
+
+          // Add heart animation
+          icon.style.animation = 'heartbeat 0.6s ease';
+          setTimeout(() => {
+            icon.style.animation = '';
+          }, 600);
+        }
+      });
+    });
+
+    // Share button functionality
+    document.querySelectorAll('.share-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const videoId = this.getAttribute('data-video-id');
+        const menu = document.getElementById(`share-menu-${videoId}`);
+
+        // Close other open menus
+        document.querySelectorAll('.share-menu.active').forEach(m => {
+          if (m !== menu) {
+            m.classList.remove('active');
+          }
+        });
+
+        // Toggle current menu
+        menu.classList.toggle('active');
+      });
+    });
+
+    // Close share menus when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.share-container')) {
+        document.querySelectorAll('.share-menu.active').forEach(menu => {
+          menu.classList.remove('active');
+        });
+      }
+    });
+
+    // Share functions
+    function shareVideo(platform, url) {
+      const title = encodeURIComponent('Check out this PMR Music video!');
+      const shareUrl = encodeURIComponent(url);
+
+      let shareLink = '';
+
+      switch(platform) {
+        case 'facebook':
+          shareLink = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+          break;
+        case 'twitter':
+          shareLink = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${title}`;
+          break;
+        case 'whatsapp':
+          shareLink = `https://wa.me/?text=${title}%20${shareUrl}`;
+          break;
+      }
+
+      if (shareLink) {
+        window.open(shareLink, '_blank', 'width=600,height=400');
+      }
+
+      // Close menu after sharing
+      document.querySelectorAll('.share-menu.active').forEach(menu => {
+        menu.classList.remove('active');
+      });
+    }
+
+    function copyVideoLink(url) {
+      navigator.clipboard.writeText(url).then(() => {
+        // Show temporary feedback
+        const copyOption = event.target.closest('.share-option');
+        const originalText = copyOption.innerHTML;
+        copyOption.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        copyOption.style.color = 'var(--yellow)';
+
+        setTimeout(() => {
+          copyOption.innerHTML = originalText;
+          copyOption.style.color = '';
+        }, 2000);
+      });
+
+      // Close menu after copying
+      document.querySelectorAll('.share-menu.active').forEach(menu => {
+        menu.classList.remove('active');
+      });
+    }
+
+    // Enhanced hover effects for video cards
+    document.querySelectorAll('.video-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+      });
+
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = '';
+      });
+    });
+
+    // Clickable thumbnails
+    document.querySelectorAll('.video-thumbnail img').forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', function() {
+        const card = this.closest('.video-card');
+        const playBtn = card.querySelector('.play-button');
+        if (playBtn) {
+          playBtn.click();
+        }
+      });
+    });
+
+    // Add heartbeat animation for likes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes heartbeat {
+        0% { transform: scale(1); }
+        25% { transform: scale(1.2); }
+        50% { transform: scale(1.1); }
+        75% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Book Us For - PMR India · Peace Musick Records</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root{
+      --black:#050505;
+      --black-soft:#0b0b0b;
+      --yellow:#ffd400;
+      --yellow-soft:#fff4b8;
+      --muted:#bdbdbd;
+      --max-w:1200px;
+      --red:#e53935;
+      --red-dark:#b71c1c;
+      --sbi-blue:#1f3566;
+      --sbi-red:#e21836;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:var(--black);
+      color:#f5f5f5;
+      -webkit-font-smoothing:antialiased;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    a{color:inherit;text-decoration:none}
+    .caption-small{font-size:11px;color:var(--muted);}
+
+    /* ========== IMPROVED NAVBAR ========== */
+    header.nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #111;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 0;
+      border: none;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #111;
+      line-height: 1.1;
+    }
+
+    .brand-subtitle {
+      font-size: 10px;
+      color: #666;
+      letter-spacing: 0.5px;
+    }
+
+    /* Desktop Navigation */
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      padding: 8px 0;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--yellow);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #000;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: #000;
+      font-weight: 700;
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn-primary {
+      background: var(--yellow);
+      color: #111;
+    }
+
+    .nav-btn-primary:hover {
+      background: #ffc800;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 212, 0, 0.3);
+    }
+
+    .nav-btn-outline {
+      background: transparent;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+
+    .nav-btn-outline:hover {
+      border-color: var(--yellow);
+      color: #000;
+    }
+
+    /* Mobile Navigation */
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #111;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 101;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      z-index: 99;
+      padding: 20px 0;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .mobile-nav-links a {
+      display: block;
+      padding: 16px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease;
+    }
+
+    .mobile-nav-links a:hover,
+    .mobile-nav-links a.active {
+      background: rgba(255, 212, 0, 0.1);
+      color: #000;
+      padding-left: 28px;
+    }
+
+    .mobile-nav-cta {
+      padding: 20px 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* GENERIC SECTION */
+    section.sec{
+      border-top:1px solid rgba(255,255,255,0.06);
+      padding:46px 24px;
+      background:var(--black-soft);
+    }
+    .sec .inner{
+      max-width:var(--max-w);
+      margin:0 auto;
+    }
+    .sec-eyebrow{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.18em;
+      color:var(--yellow-soft);
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
+    .sec-title{
+      font-family:Poppins,sans-serif;
+      font-size:24px;
+      font-weight:700;
+      color:#fff;
+      margin:0 0 10px;
+    }
+    .sec-text{
+      color:var(--muted);
+      font-size:14px;
+      max-width:860px;
+    }
+
+    /* BOOK US FOR CARDS WITH ANIMATIONS */
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:24px;
+      margin-top:30px;
+    }
+    .card{
+      background:#070707;
+      border-radius:16px;
+      padding:24px 24px 28px;
+      border:1px solid rgba(255,255,255,0.08);
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: cardFadeIn 0.8s ease forwards;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(255, 212, 0, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    }
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+    .card:nth-child(7) { animation-delay: 0.7s; }
+    .card:nth-child(8) { animation-delay: 0.8s; }
+    .card:nth-child(9) { animation-delay: 0.9s; }
+    .card:nth-child(10) { animation-delay: 1.0s; }
+
+    @keyframes cardFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card h4{
+      font-family:Poppins,sans-serif;
+      font-weight:700;
+      color:var(--yellow);
+      margin:0 0 12px;
+      font-size:16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .card h4 i {
+      font-size: 20px;
+      color: var(--yellow);
+    }
+    .card p{
+      margin:0;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    /* ANIMATIONS / FADEIN */
+    .fade-in{
+      opacity:0;
+      transform:translateY(30px);
+      transition:opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.animate{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* HERO ANIMATIONS */
+    .sec-eyebrow {
+      animation: slideInLeft 0.8s ease-out;
+    }
+
+    .sec-title {
+      animation: slideInUp 1.2s ease-out 0.2s both;
+    }
+
+    .sec-text {
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    /* CARD ANIMATIONS */
+    .card {
+      animation: fadeInUp 0.8s ease-out both;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+    .card:nth-child(7) { animation-delay: 0.7s; }
+    .card:nth-child(8) { animation-delay: 0.8s; }
+    .card:nth-child(9) { animation-delay: 0.9s; }
+    .card:nth-child(10) { animation-delay: 1.0s; }
+
+    /* BUTTON ENHANCED ANIMATIONS */
+    .btn:hover {
+      animation: buttonPulse 0.6s ease-out;
+    }
+
+    /* KEYFRAME ANIMATIONS */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes buttonPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* MOBILE MENU ANIMATION */
+    .mobile-nav {
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* ENHANCED HOVER EFFECTS */
+    .card:hover {
+      animation: cardHover 0.3s ease-out;
+    }
+
+    @keyframes cardHover {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-5px) scale(1.02); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .desktop-nav {
+        gap: 20px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .mobile-toggle{display:block;}
+      .desktop-nav{display:none;}
+      .mobile-nav{display:block;}
+      .cards{grid-template-columns:1fr;}
+    }
+
+    @media (max-width: 800px){
+      .card h4 {
+        font-size: 15px;
+      }
+      .card p {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 600px){
+      .nav-inner {
+        padding: 0 20px;
+      }
+      section.sec {
+        padding: 40px 20px;
+      }
+      .card {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card h4 {
+        font-size: 14px;
+      }
+      .card p {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- IMPROVED NAVBAR -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo">
+          <img src="logo.png" alt="Peace Musick Records logo">
+        </div>
+      
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="desktop-nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">Services</a></li>
+          <li><a href="bookus.html" class="active">Book Us For</a></li>
+          <li><a href="index.html#kuchkar">Kuch Kar India</a></li>
+          <li><a href="index.html#pmrmusic">Music</a></li>
+          <li><a href="index.html#join">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <button class="nav-btn nav-btn-primary" onclick="window.open('index.html#join', '_blank')">Donate Now</button>
+          <button class="nav-btn nav-btn-outline" onclick="window.open('index.html#kuchkar', '_blank')">Stand With Us</button>
+        </div>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button class="mobile-toggle" id="mobileToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+      <ul class="mobile-nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">Services</a></li>
+        <li><a href="bookus.html" class="active">Book Us For</a></li>
+        <li><a href="index.html#kuchkar">Kuch Kar India</a></li>
+        <li><a href="index.html#pmrmusic">Music</a></li>
+        <li><a href="index.html#join">Contact</a></li>
+      </ul>
+      <div class="mobile-nav-cta">
+        <button class="btn btn-primary" onclick="window.open('index.html#join', '_blank')" style="width:100%">Donate Now</button>
+        <button class="btn btn-ghost" onclick="window.open('index.html#kuchkar', '_blank')" style="width:100%">Join Campaign</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- BOOK US FOR -->
+  <section class="sec fade-in" id="bookus">
+    <div class="inner">
+      <div class="sec-eyebrow">BOOK US FOR</div>
+      <h2 class="sec-title">Our Services & Programs</h2>
+      <p class="sec-text">
+        PMR India offers a comprehensive range of services designed to empower youth through hip-hop culture, psychology, and community engagement. From performances to partnerships, we create positive impact.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h4><i class="fas fa-microphone"></i> Hip-Hop Performances & Artist Shows</h4>
+          <p>Live performances rooted in conscious hip-hop culture — cyphers, rap, spoken word and youth-safe musical content. These shows promote expression, identity, and social awareness while keeping the environment positive and stigma-free. Art becomes a bridge for dialogue, healing, and activism — not entertainment alone.</p>
+        </div>
+
+        <div class="card">
+          <h4><i class="fas fa-lightbulb"></i> Workshops & Skill Labs</h4>
+          <p>Interactive learning spaces where youth explore creativity, writing, digital expression, leadership, identity, and resilience. These labs blend psychology-based tools with artistic exercises to help participants express emotions, build self-confidence, learn teamwork, and discover constructive outlets instead of substance abuse or violence.</p>
+        </div>
+
+        <div class="card">
+          <h4><i class="fas fa-graduation-cap"></i> School & College Awareness Programs</h4>
+          <p>Engaging sessions on drugs, mental health, social pressure, identity struggle, and youth culture — delivered through stories, hip-hop elements, and real-life conversations. The goal is prevention, awareness, and empowering students to make informed choices while building a compassionate, stigma-free dialogue around addiction and psychological wellbeing.</p>
+        </div>
+
+        <div class="card">
+          <h4><i class="fas fa-comments"></i> Talks & Guest Lectures</h4>
+          <p>Thought-provoking talks by psychologists, artists, social leaders, and youth-culture experts. These lectures explore the intersections of mental health, creativity, identity, trauma, recovery, and social change — inspiring young people, educators, and communities to see art as both healing and activism.</p>
+        </div>
+
+        <div class="card">
+          <h4><i class="fas fa-users"></i> Panel Discussions & Conferences</h4>
+          <p>Multi-voice conversations bringing together activists, psychologists, artists, educators, policymakers, and lived-experience speakers. Panels address drug awareness, mental health stigma, culture, social change, and grassroots activism — building knowledge while shaping compassionate and progressive narratives around youth and society.</p>
+        </div>
+
+        <div class="card">
+          <h4><i class="fas fa-map-marker-alt"></i> Community Events & Street Activations</h4>
+          <p>On-ground social awareness events, cyphers, street theatre, art walls, and youth gatherings designed to reach real people where they are. These events inspire dialogue, belonging, safer spaces, and collective responsibility — turning streets into platforms for awareness, impact, and unity.</p>
+        </div>
+
+        <div class="card">
+          <h4><i class="fas fa-rocket"></i> Creative Campaign Building (Social Impact Only)</h4>
+          <p>We help organisations, schools, brands, and communities design ethical, impact-driven campaigns focused on awareness, change-making, and youth empowerment. Strategy blends psychology, storytelling, and hip-hop culture — ensuring campaigns stay authentic, responsible, youth-safe, and socially conscious.</p>
+        </div>
+
+        <div class="card">
+          <h4><i class="fas fa-video"></i> Documentary & Media Collaborations</h4>
+          <p>Partnerships for creating authentic documentaries, interviews, music-based features, social campaigns, and digital content that amplify unheard voices. We ensure youth mental health sensitivity, ethical storytelling, and real-world impact — not exploitation or glorification.</p>
+        </div>
+
+        <div class="card">
+          <h4><i class="fas fa-handshake"></i> CSR & NGO Partnerships</h4>
+          <p>Collaborations with corporates, NGOs, institutions, and community groups to design and run sustainable social-impact programs. Focus areas include youth empowerment, addiction prevention, creative therapy engagement, and mental-health-aware interventions grounded in culture, trust, and real-life needs.</p>
+        </div>
+
+        <div class="card">
+          <h4><i class="fas fa-chalkboard-teacher"></i> Training for Teachers / Counselors on Youth Culture</h4>
+          <p>Capacity-building programs that help educators, psychologists, and frontline workers understand hip-hop culture, street reality, addiction risk factors, trauma, and youth language. The goal is improving communication, empathy, and early-stage prevention through culturally aware and psychologically informed approaches.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // ========== MOBILE NAVIGATION ==========
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    if (mobileToggle && mobileNav) {
+      mobileToggle.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+        const icon = mobileToggle.querySelector('i');
+        if (mobileNav.classList.contains('active')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+
+      document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.remove('active');
+          mobileToggle.querySelector('i').classList.remove('fa-times');
+          mobileToggle.querySelector('i').classList.add('fa-bars');
+        });
+      });
+    }
+
+    // ========== FADE-IN ANIMATIONS ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ========== INITIALIZE ON PAGE LOAD ==========
+    document.addEventListener('DOMContentLoaded', function() {
+      // Show loading indicators initially
+      // Check if YouTube API is already loaded
+    });
+  </script>
+</body>
+</html>
